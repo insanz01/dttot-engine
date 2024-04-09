@@ -1,6 +1,5 @@
 from flask_restful import Resource
 from flask import request
-from ..utils import parse_params
 from ..utils.error_codes import ERROR_METHOD_NOT_ALLOWED, ERROR_BAD_REQUEST
 from ..utils.permission import allowed_file
 from ..utils.response import response_error, response_success
@@ -14,7 +13,7 @@ class DocumentsAPI(Resource):
         if request.method != 'POST':
             return response_error('METHOD NOT SUPPORT', ERROR_METHOD_NOT_ALLOWED)
 
-        if 'file'not in request.files:
+        if 'file' not in request.files:
             return response_error('FILE NOT FOUND', ERROR_BAD_REQUEST)
 
         file = request.files['file']
@@ -26,6 +25,7 @@ class DocumentsAPI(Resource):
             filename = secure_filename(file.filename)
             print(filename)
             # TODO: save to bucket
+
 
 class TestAPI(Resource):
     @staticmethod
