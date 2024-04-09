@@ -2,11 +2,13 @@ from flask import Flask
 from flask_redis import FlaskRedis
 from flask.blueprints import Blueprint
 import api.routes
+from config import config, host, port
 
 from api.utils.error_codes import ERROR_NOT_FOUND, ERROR_INTERNAL_SERVER_ERROR
 from api.utils.response import response_error
 
 app = Flask(__name__)
+app.config.from_object(config)
 redis_client = FlaskRedis(app)
 
 
@@ -34,4 +36,4 @@ def internal_error(error):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=host, port=port, debug=config.DEBUG)
