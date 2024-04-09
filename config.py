@@ -24,6 +24,8 @@ class Config(object):
 
     REDIS_URL = "redis://:@localhost:6379/0"
 
+    GOOGLE_CLOUD_STORAGE = 'creds/app-dttotengine-d6g85606gee9.json'
+
 
 class ProductionConfig(Config):
     DEBUG = False
