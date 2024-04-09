@@ -3,7 +3,7 @@ import os
 host = os.environ.get('APP_HOST', 'localhost')
 port = os.environ.get('APP_PORT', 5000)
 
-db_name = os.environ.get('DB_NAME', 'dttot-engine')
+db_name = os.environ.get('DB_NAME', 'dttot_engine')
 db_user = os.environ.get('DB_USER', 'root')
 db_password = os.environ.get('DB_PASSWORD', 'password')
 db_port = os.environ.get('DB_PORT', '5432')

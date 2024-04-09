@@ -47,3 +47,5 @@ A
 api/config/gcp.py,f/6/f64b3929dc3f09218bc07b09f0c1a52de3853d5f
 @
 api/config/db.py,5/1/51e1bcd1dec2b36289e9cf5aadf3ee0154ddbdce
+<
+.env.example,d/4/d4dae00d11854b35292c2b8a30515a9a0aa2d871
