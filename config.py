@@ -7,6 +7,7 @@ db_name = os.environ.get('DB_NAME', 'dttot-engine')
 db_user = os.environ.get('DB_USER', 'root')
 db_password = os.environ.get('DB_PASSWORD', 'password')
 db_port = os.environ.get('DB_PORT', '5432')
+db_host = os.environ.get('DB_HOST', 'localhost')
 
 
 class Config(object):
@@ -14,7 +15,7 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'XXXXX'  # todo: should be changed for production
-    SQLALCHEMY_DATABASE_URI = "postgresql://{}:{}@database:{}/{}".format(db_user, db_password, db_port, db_name)
+    SQLALCHEMY_DATABASE_URI = "postgresql://{}:{}@{}:{}/{}".format(db_user, db_password, db_host, db_port, db_name)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     SECURITY_URL_PREFIX = ""
