@@ -1,0 +1,29 @@
+version: '2'
+services:
+  database:
+    restart: always
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    env_file:
+      - .env
+    volumes:
+      - ./postgres-data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5431:5431"
+  redis:
+     image: redis:7.2.3-alpine
+     ports:
+       - "6379:6379"
+  api:
+    restart: always
+    build: .
+    env_file:
+    - .env
+    ports:
+      - "7100:7100"
+    depends_on:
+      - database
+    command: gunicorn app:app --bind 0.0.0.0:7100 --workers 2
