@@ -14,7 +14,7 @@ from config import config
 storage_client = storage.Client.from_service_account_json(config.GOOGLE_CLOUD_STORAGE)
 
 
-def create_bucket(bucket_name="checkma"):
+def create_bucket(bucket_name="dttot_documents"):
     """Creates a new bucket."""
     try:
         bucket = storage_client.create_bucket(bucket_name)
@@ -24,7 +24,7 @@ def create_bucket(bucket_name="checkma"):
         return False
 
 
-def upload_blob(source_file_name, destination_blob_name, bucket_name="checkma"):
+def upload_blob(source_file_name, destination_blob_name, bucket_name="dttot_documents"):
     """Uploads a file to the bucket."""
     try:
         bucket = storage_client.get_bucket(bucket_name)
@@ -40,7 +40,7 @@ def upload_blob(source_file_name, destination_blob_name, bucket_name="checkma"):
         return False
 
 
-def download_blob(source_blob_name, destination_file_name, bucket_name="checkma"):
+def download_blob(source_blob_name, destination_file_name, bucket_name="dttot_documents"):
     """Downloads a blob from the bucket."""
     try:
         bucket = storage_client.get_bucket(bucket_name)
@@ -56,7 +56,7 @@ def download_blob(source_blob_name, destination_file_name, bucket_name="checkma"
         return False
 
 
-def delete_blob(blob_name, bucket_name="checkma"):
+def delete_blob(blob_name, bucket_name="dttot_documents"):
     """Deletes a blob from the bucket."""
     try:
         bucket = storage_client.get_bucket(bucket_name)
@@ -69,7 +69,7 @@ def delete_blob(blob_name, bucket_name="checkma"):
         return False
 
 
-def list_blobs(parent="", bucket_name="checkma"):
+def list_blobs(parent="", bucket_name="dttot_documents"):
     """Lists all the blobs in the bucket."""
     try:
         # Note: Client.list_blobs requires at least package version 1.17.0.
@@ -82,7 +82,7 @@ def list_blobs(parent="", bucket_name="checkma"):
         return False
 
 
-def create_folder(path, bucket_name="checkma"):
+def create_folder(path, bucket_name="dttot_documents"):
     """ Create a new folder """
     try:
         bucket = storage_client.get_bucket(bucket_name)
@@ -96,7 +96,7 @@ def create_folder(path, bucket_name="checkma"):
         return False
 
 
-def delete_folder(path, bucket_name="checkma"):
+def delete_folder(path, bucket_name="dttot_documents"):
     """ Delete a folder """
     try:
         if path[-1] != "/":
@@ -113,7 +113,7 @@ def delete_folder(path, bucket_name="checkma"):
         return False
 
 
-def check_folder_exists(folder_path, bucket_name="checkma"):
+def check_folder_exists(folder_path, bucket_name="dttot_documents"):
     """ check if path/file exists in bucket or not in google storage """
     bucket = storage_client.bucket(bucket_name)
     stats = storage.Blob(bucket=bucket, name=folder_path).exists(storage_client)
