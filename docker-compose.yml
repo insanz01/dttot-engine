@@ -14,9 +14,10 @@ services:
     ports:
       - "5431:5431"
   redis:
-     image: redis:7.2.3-alpine
-     ports:
-       - "6379:6379"
+    restart: always
+    image: redis:7.2.3-alpine
+    ports:
+      - "6379:6379"
   api:
     restart: always
     build: .
